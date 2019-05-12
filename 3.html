@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Zadanie 3</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        list-style: none;
+        text-decoration: none;
+    }
+
+    .page-container {
+        width: 50vw;
+        margin: 0 auto;
+    }
+
+    .table__list {
+        padding: 0;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+    .table__element {
+        padding: 7px;
+        border-bottom: 1px solid black;
+    }
+
+    .table__element--hide {
+        display: none;
+    }
+</style>
+
+<body>
+    <div class="page-container">
+        <form class="form">
+            <fieldset class="form__group">
+                <legend class="form__title">Search:</legend>
+                <input type="text" name="text" class="form__input" />
+                <button type="submit" class="form__button">Go!</button>
+            </fieldset>
+        </form>
+        <section class="table">
+            <ul class="table__list">
+                <li class="table__element">Walmart</li>
+                <li class="table__element">State Grid</li>
+                <li class="table__element">Sinopec Group</li>
+                <li class="table__element">China National Petroleum</li>
+                <li class="table__element">Royal Dutch Schell</li>
+                <li class="table__element">Toyota Motor</li>
+                <li class="table__element">Volkswagen</li>
+                <li class="table__element">BP</li>
+                <li class="table__element">Exxon Mobil</li>
+                <li class="table__element">Berkshire Hathaway</li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        const filterCompanies = (e) => {
+            const tableElements = document.querySelectorAll('.table__element');
+            const input = document.querySelector('.form__input').value.toLowerCase().trim();
+            e.preventDefault();
+            tableElements.forEach(el => {
+                if (el.textContent.toLowerCase().indexOf(input) > -1) {
+                    el.classList.remove('table__element--hide');
+                } else {
+                    el.classList.add('table__element--hide');
+                }
+            });
+            document.querySelector('.form').reset();
+        }
+
+        document.querySelector('.form').addEventListener('submit', filterCompanies);
+    </script>
+</body>
+
+</html>

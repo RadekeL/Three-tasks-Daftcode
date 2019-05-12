@@ -1,0 +1,98 @@
+<!-- Zgodnie z poleceniem i moją interpretacją, każde z zadań zrobiłem w jednym pliku html, 
+bez odrębnych plików css czy js -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ZADANIE 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: 0;
+        }
+
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 100px minmax(200px, auto) minmax(200px, auto) 100px;
+            grid-gap: 15px;
+            width: 100vw;
+            min-height: 100vh;
+            grid-template-areas:
+                "header"
+                "sidebar"
+                "section"
+                "footer";
+        }
+
+        .page-header {
+            background-color: #1A1C22;
+            grid-area: header;
+        }
+
+        .content-area {
+            display: grid;
+            grid-gap: 15px;
+            grid-area: section;
+        }
+
+        .sidebar {
+            background-color: #6C757D;
+            grid-area: sidebar;
+        }
+
+        .page-footer {
+            background-color: #1A1C22;
+            grid-area: footer;
+        }
+
+        .content-area__element {
+            background-color: #343A40;
+        }
+
+        @media (min-width: 600px) {
+            .content-area {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .main-container {
+                grid-template-columns: 400px 1fr;
+                grid-template-rows: 100px minmax(400px, auto) 100px;
+                grid-template-areas:
+                    "header header"
+                    "sidebar section"
+                    "footer footer";
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .content-area {
+                grid-template-columns: repeat(3, auto);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <header class="page-header"></header>
+        <aside class="sidebar"></aside>
+        <main class="content-area">
+            <section class="content-area__element"></section>
+            <section class="content-area__element"></section>
+            <section class="content-area__element"></section>
+            <section class="content-area__element"></section>
+            <section class="content-area__element"></section>
+            <section class="content-area__element"></section>
+        </main>
+        <footer class="page-footer"></footer>
+    </div>
+</body>
+
+</html>
